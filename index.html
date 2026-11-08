@@ -3,529 +3,384 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Happy Diwali Aarushi! ✨</title>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
+  <title>Dr. Aarushi's Diwali Special ✨</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&display=swap" rel="stylesheet">
   <style>
     * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      user-select: none;
-      -webkit-user-select: none;
-      -webkit-touch-callout: none;
+      box-sizing: border-box; margin: 0; padding: 0;
+      user-select: none; -webkit-user-select: none; -webkit-touch-callout: none;
     }
 
     body, html {
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      background: radial-gradient(circle at center, #141829 0%, #070810 100%);
-      font-family: 'Outfit', sans-serif;
-      color: #fff;
-      touch-action: none;
+      width: 100%; height: 100%; overflow: hidden;
+      background: radial-gradient(circle at center, #16192b 0%, #070810 100%);
+      font-family: 'Outfit', sans-serif; color: #fff; touch-action: none;
     }
 
-    /* Background & Global Sparkler Canvas */
     #bgCanvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 100;
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none; z-index: 100;
     }
 
-    /* Screens & Level Containers */
     .screen {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.7s ease-in-out;
-      z-index: 10;
-      padding: 20px;
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none; transition: opacity 0.65s ease-in-out;
+      z-index: 10; padding: 20px;
     }
 
-    .screen.active {
-      opacity: 1;
-      pointer-events: auto;
-    }
+    .screen.active { opacity: 1; pointer-events: auto; }
 
     .header-box {
-      position: absolute;
-      top: 6%;
-      text-align: center;
-      width: 90%;
-      z-index: 20;
-      pointer-events: none;
+      position: absolute; top: 5%; text-align: center; width: 92%; z-index: 20; pointer-events: none;
     }
 
     .level-badge {
-      display: inline-block;
-      background: rgba(255, 183, 3, 0.15);
-      border: 1px solid rgba(255, 183, 3, 0.5);
-      color: #ffb703;
-      padding: 4px 14px;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      margin-bottom: 8px;
-      text-transform: uppercase;
+      display: inline-block; background: rgba(255, 183, 3, 0.15); border: 1px solid rgba(255, 183, 3, 0.5);
+      color: #ffb703; padding: 4px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 700;
+      letter-spacing: 1px; margin-bottom: 6px; text-transform: uppercase;
     }
 
     .title {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #fff;
-      text-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
-      margin-bottom: 6px;
+      font-size: 1.45rem; font-weight: 800; color: #fff;
+      text-shadow: 0 0 15px rgba(255, 215, 0, 0.35); margin-bottom: 4px;
     }
-
-    .subtitle {
-      font-size: 1rem;
-      color: #cbd5e1;
-      font-weight: 300;
-    }
-
+    .subtitle { font-size: 0.95rem; color: #cbd5e1; font-weight: 300; }
     .score-pill {
-      margin-top: 10px;
-      display: inline-block;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(8px);
-      padding: 6px 18px;
-      border-radius: 30px;
-      font-weight: 700;
-      color: #38bdf8;
-      font-size: 1.1rem;
+      margin-top: 8px; display: inline-block; background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(8px);
+      padding: 5px 16px; border-radius: 30px; font-weight: 700; color: #38bdf8; font-size: 1rem;
       border: 1px solid rgba(255, 255, 255, 0.15);
     }
 
-    /* Start Screen */
+    /* Intro Card */
     .start-card {
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 215, 0, 0.25);
-      border-radius: 24px;
-      padding: 35px 25px;
-      text-align: center;
-      max-width: 360px;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 30px rgba(255, 183, 3, 0.15);
+      background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 215, 0, 0.3); border-radius: 26px;
+      padding: 30px 24px; text-align: center; max-width: 370px; width: 95%;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.65), 0 0 30px rgba(255, 183, 3, 0.15);
     }
-
+    .trait-tags { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 14px 0; }
+    .trait {
+      background: rgba(56, 189, 248, 0.12); border: 1px solid rgba(56, 189, 248, 0.35);
+      color: #bae6fd; padding: 4px 12px; border-radius: 15px; font-size: 0.8rem; font-weight: 500;
+    }
     .btn-glow {
-      margin-top: 24px;
-      padding: 14px 34px;
-      font-size: 1.1rem;
-      font-weight: 700;
-      font-family: 'Outfit', sans-serif;
-      color: #0f172a;
-      background: linear-gradient(135deg, #ffd166, #ffb703);
-      border: none;
-      border-radius: 50px;
-      cursor: pointer;
-      box-shadow: 0 0 20px rgba(255, 183, 3, 0.6);
-      transition: transform 0.2s, box-shadow 0.2s;
+      margin-top: 18px; padding: 14px 30px; font-size: 1.05rem; font-weight: 700; font-family: 'Outfit', sans-serif;
+      color: #0f172a; background: linear-gradient(135deg, #ffd166, #ffb703); border: none; border-radius: 50px;
+      cursor: pointer; box-shadow: 0 0 20px rgba(255, 183, 3, 0.55); transition: transform 0.2s; width: 100%;
     }
+    .btn-glow:active { transform: scale(0.95); }
 
-    .btn-glow:active {
-      transform: scale(0.95);
+    /* L1: Bubbles */
+    .bubble-grid { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; max-width: 360px; margin-top: 60px; z-index: 15; }
+    .stress-bubble {
+      width: 102px; height: 102px; border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, rgba(244, 63, 94, 0.85), rgba(159, 18, 57, 0.9));
+      border: 2px solid rgba(255, 228, 230, 0.5);
+      box-shadow: 0 0 20px rgba(244, 63, 94, 0.4), inset 0 0 12px rgba(255,255,255,0.4);
+      display: flex; align-items: center; justify-content: center; text-align: center; padding: 10px;
+      font-size: 0.85rem; font-weight: 700; color: #fff; cursor: pointer; transition: transform 0.25s, opacity 0.25s;
+      animation: floatBubble 2.5s infinite ease-in-out alternate;
     }
-
-    /* Game Canvases */
-    .game-canvas {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 12;
+    .stress-bubble:nth-child(even) {
+      animation-delay: 0.6s;
+      background: radial-gradient(circle at 30% 30%, rgba(168, 85, 247, 0.85), rgba(107, 33, 168, 0.9));
+      box-shadow: 0 0 20px rgba(168, 85, 247, 0.4), inset 0 0 12px rgba(255,255,255,0.4);
     }
+    .stress-bubble.popped { transform: scale(1.4); opacity: 0; pointer-events: none; }
+    @keyframes floatBubble { from { transform: translateY(-5px); } to { transform: translateY(6px); } }
 
-    /* Toast Popups */
-    #toast {
-      position: fixed;
-      top: 24%;
-      left: 50%;
-      transform: translate(-50%, -20px);
-      background: rgba(239, 68, 68, 0.92);
-      color: #fff;
-      padding: 10px 22px;
-      border-radius: 30px;
-      font-weight: 700;
-      font-size: 0.95rem;
-      z-index: 200;
-      opacity: 0;
-      pointer-events: none;
-      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      box-shadow: 0 8px 25px rgba(239, 68, 68, 0.4);
-      white-space: nowrap;
+    /* L2: Catcher */
+    .game-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 12; }
+
+    /* L3: Artist */
+    .easel-box {
+      position: relative; width: 280px; height: 280px; border-radius: 22px; background: rgba(255, 255, 255, 0.04);
+      border: 2px dashed rgba(255, 215, 0, 0.4); display: flex; align-items: center; justify-content: center;
+      margin-top: 45px; overflow: hidden; z-index: 15; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     }
+    .hidden-masterpiece { text-align: center; padding: 15px; }
+    .masterpiece-icons { font-size: 72px; filter: drop-shadow(0 0 20px #ffb703); }
+    .masterpiece-caption { margin-top: 10px; font-weight: 800; color: #ffd166; font-size: 1.15rem; }
+    #artCanvas { position: absolute; top: 0; left: 0; width: 280px; height: 280px; z-index: 16; cursor: crosshair; touch-action: none; }
 
-    #toast.show {
-      opacity: 1;
-      transform: translate(-50%, 0);
-    }
-
-    /* Level 3: Piano & Diyas */
-    .diyas-row {
-      display: flex;
-      gap: 32px;
-      margin-bottom: 50px;
-      z-index: 15;
-    }
-
-    .diya-wrap {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
+    /* L4: Piano */
+    .diyas-row { display: flex; gap: 24px; margin-bottom: 35px; margin-top: 40px; z-index: 15; }
+    .diya-wrap { display: flex; flex-direction: column; align-items: center; }
     .flame {
-      width: 18px;
-      height: 28px;
-      background: radial-gradient(ellipse at bottom, #fff 10%, #ffb703 50%, #fb8500 90%);
-      border-radius: 50% 50% 35% 35%;
-      opacity: 0;
-      transform: scale(0.4);
-      transition: all 0.5s ease;
-      box-shadow: 0 0 20px #ffb703, 0 0 40px #fb8500;
-      margin-bottom: -4px;
+      width: 16px; height: 26px; background: radial-gradient(ellipse at bottom, #fff 10%, #ffb703 50%, #fb8500 90%);
+      border-radius: 50% 50% 35% 35%; opacity: 0; transform: scale(0.4); transition: all 0.4s ease;
+      box-shadow: 0 0 20px #ffb703, 0 0 40px #fb8500; margin-bottom: -4px;
     }
-
-    .diya-wrap.lit .flame {
-      opacity: 1;
-      transform: scale(1);
-      animation: flicker 1.2s infinite alternate;
-    }
-
-    @keyframes flicker {
-      0% { transform: scale(1) rotate(-2deg); }
-      100% { transform: scale(1.08) rotate(2deg); }
-    }
-
+    .diya-wrap.lit .flame { opacity: 1; transform: scale(1); }
     .diya-bowl {
-      width: 64px;
-      height: 28px;
-      background: linear-gradient(to bottom, #d97706, #92400e);
-      border-radius: 4px 4px 35px 35px;
-      border-top: 3px solid #fcd34d;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.6);
+      width: 56px; height: 24px; background: linear-gradient(to bottom, #d97706, #92400e);
+      border-radius: 4px 4px 30px 30px; border-top: 3px solid #fcd34d;
     }
-
-    .piano-box {
-      display: flex;
-      gap: 10px;
-      padding: 16px;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 20px;
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      z-index: 15;
-    }
-
+    .piano-box { display: flex; gap: 8px; padding: 14px; background: rgba(255, 255, 255, 0.06); border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.15); z-index: 15; }
     .piano-key {
-      width: 52px;
-      height: 155px;
-      background: linear-gradient(to bottom, #f8fafc, #e2e8f0);
-      border-radius: 0 0 12px 12px;
-      box-shadow: 0 6px 0 #94a3b8, 0 10px 20px rgba(0,0,0,0.4);
-      cursor: pointer;
-      position: relative;
-      transition: all 0.12s ease;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      padding-bottom: 14px;
-      color: #475569;
-      font-weight: 700;
+      width: 54px; height: 150px; background: linear-gradient(to bottom, #f8fafc, #e2e8f0); border-radius: 0 0 12px 12px;
+      box-shadow: 0 6px 0 #94a3b8; cursor: pointer; display: flex; flex-direction: column; align-items: center;
+      justify-content: flex-end; padding-bottom: 12px; color: #334155; font-weight: 800; font-size: 0.85rem; transition: all 0.1s;
+    }
+    .piano-key.glow { background: linear-gradient(to bottom, #fef08a, #fde047); box-shadow: 0 6px 0 #ca8a04, 0 0 25px #facc15; color: #854d0e; transform: translateY(-3px); }
+    .piano-key:active { transform: translateY(4px); }
+
+    /* L5: Cavity */
+    .tooth-stage { position: relative; width: 250px; height: 270px; display: flex; align-items: center; justify-content: center; z-index: 15; margin-top: 45px; }
+    .tooth-base { font-size: 190px; line-height: 1; filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.5)); }
+    #scratchCanvas { position: absolute; top: 0; left: 0; width: 250px; height: 270px; z-index: 16; touch-action: none; }
+
+    /* L6: Memory Card Match (4x4 Grid) */
+    .memory-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 60px; z-index: 15;
+    }
+    .memory-card {
+      width: 72px; height: 72px; position: relative; transform-style: preserve-3d;
+      transition: transform 0.5s cubic-bezier(0.4, 0.0, 0.2, 1); cursor: pointer;
+    }
+    .memory-card.flip { transform: rotateY(180deg); }
+    .front-face, .back-face {
+      position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center; font-size: 34px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+    .front-face {
+      background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(10px);
+      border: 1px solid rgba(56, 189, 248, 0.4); color: rgba(255,255,255,0.4); font-size: 24px;
+    }
+    .back-face {
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      border: 1px solid #38bdf8; transform: rotateY(180deg);
     }
 
-    .piano-key.glow {
-      background: linear-gradient(to bottom, #fef08a, #fde047);
-      box-shadow: 0 6px 0 #ca8a04, 0 0 25px #facc15;
-      color: #854d0e;
-      animation: pulseKey 1.3s infinite alternate;
+    /* L7: FINAL AESTHETIC PRESCRIPTION CARD */
+    .rx-card {
+      background: linear-gradient(145deg, rgba(30, 41, 59, 0.75), rgba(15, 23, 42, 0.95));
+      backdrop-filter: blur(28px); -webkit-backdrop-filter: blur(28px);
+      border: 1px solid rgba(255, 215, 0, 0.35); border-radius: 28px; padding: 30px 26px;
+      max-width: 400px; width: 92%; z-index: 30;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 0 40px rgba(255, 183, 3, 0.15);
+      animation: popIn 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+      transform: scale(0.8); opacity: 0;
     }
 
-    @keyframes pulseKey {
-      from { box-shadow: 0 6px 0 #ca8a04, 0 0 15px #facc15; }
-      to { box-shadow: 0 6px 0 #ca8a04, 0 0 32px #facc15; }
+    @keyframes popIn { to { transform: scale(1); opacity: 1; } }
+
+    .rx-header {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 16px; margin-bottom: 20px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .dr-name { font-weight: 800; color: #fde047; font-size: 1.25rem; letter-spacing: 0.5px; text-shadow: 0 0 10px rgba(253, 224, 71, 0.3); }
+    .dr-deg { font-size: 0.8rem; color: #7dd3fc; font-weight: 500; margin-top: 3px; }
+    
+    .msg-body { font-size: 1.05rem; line-height: 1.6; color: #e2e8f0; font-weight: 300; }
+    .highlight-glow { color: #fde047; font-weight: 700; text-shadow: 0 0 12px rgba(253, 224, 71, 0.4); }
+    .cheer-text { color: #38bdf8; font-weight: 600; display: block; margin-top: 10px; font-style: italic; }
+
+    .aesthetic-divider {
+      width: 100%; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      margin: 18px 0;
     }
 
-    .piano-key:active, .piano-key.pressed {
-      transform: translateY(5px);
-      box-shadow: 0 1px 0 #94a3b8;
+    .vip-btn {
+      margin-top: 8px; padding: 16px 20px; width: 100%; border-radius: 16px;
+      background: linear-gradient(90deg, #d97706, #fbbf24, #d97706); background-size: 200% auto;
+      color: #111827; font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 1.05rem;
+      border: none; cursor: pointer; transition: all 0.3s;
+      box-shadow: 0 10px 20px rgba(217, 119, 6, 0.3);
+      animation: shineBtn 3s linear infinite;
+    }
+    .vip-btn:active { transform: scale(0.96); }
+
+    @keyframes shineBtn {
+      to { background-position: 200% center; }
     }
 
-    /* Level 4: Cavity Cleaner */
-    .tooth-stage {
-      position: relative;
-      width: 260px;
-      height: 290px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 15;
-      margin-top: 40px;
+    #toast {
+      position: fixed; top: 18%; left: 50%; transform: translate(-50%, -20px);
+      background: rgba(239, 68, 68, 0.95); color: #fff; padding: 12px 24px; border-radius: 30px;
+      font-weight: 700; font-size: 0.95rem; z-index: 200; opacity: 0; pointer-events: none;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); white-space: nowrap; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     }
-
-    .tooth-base {
-      font-size: 200px;
-      line-height: 1;
-      filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.5));
-      user-select: none;
-    }
-
-    #scratchCanvas {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 260px;
-      height: 290px;
-      z-index: 16;
-      cursor: crosshair;
-       touch-action: none;
-    }
-
-    /* Level 5: Final Message Card */
-    .message-card {
-      background: rgba(15, 23, 42, 0.72);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 215, 0, 0.35);
-      border-radius: 26px;
-      padding: 32px 26px;
-      max-width: 390px;
-      width: 92%;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.75), 0 0 40px rgba(255, 183, 3, 0.2);
-      text-align: left;
-      opacity: 0;
-      transform: scale(0.88) translateY(20px);
-      transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
-      z-index: 30;
-    }
-
-    .message-card.visible {
-      opacity: 1;
-      transform: scale(1) translateY(0);
-    }
-
-    .msg-body {
-      font-size: 1.08rem;
-      line-height: 1.65;
-      color: #f8fafc;
-      font-weight: 300;
-      letter-spacing: 0.2px;
-    }
-
-    .msg-highlight {
-      color: #ffd166;
-      font-weight: 700;
-    }
+    #toast.show { opacity: 1; transform: translate(-50%, 0); }
   </style>
 </head>
 <body>
 
-  <!-- Hidden BGM Audio Element (Set to trim & loop the best part at 30% volume) -->
-  <audio id="bgm" src="song.mp3" preload="auto"></audio>
-
-  <!-- Global Sparkler Trail & Fireworks Canvas -->
+  <audio id="bgm" src="./song.mp3" preload="auto" loop></audio>
   <canvas id="bgCanvas"></canvas>
+  <div id="toast">Pop!</div>
 
-  <!-- Funny Toast Notification -->
-  <div id="toast">Arre, stethoscope chhod ab daant dekh! 😂</div>
-
-  <!-- INTRO SCREEN -->
+  <!-- LEVEL 0 -->
   <div id="screen0" class="screen active">
     <div class="start-card">
-      <div class="level-badge">Diwali Special ✨</div>
-      <h1 class="title" style="font-size: 1.8rem; margin-top: 6px;">Hey Aarushi! 🪔</h1>
-      <p class="subtitle" style="margin-top: 10px; line-height: 1.5;">
-        Room mein baithe-baithe bore ho rahi hogi, toh socha tere liye ek chota sa custom game bana du. <br><br>
-        Ready to unlock your Diwali surprise, Future Doctor?
+      <div class="level-badge">Custom Made For Aarushi ✨</div>
+      <h1 class="title" style="font-size: 1.75rem; margin-top: 4px;">Dr. Aarushi's Arcade 🦷🎨</h1>
+      <div class="trait-tags">
+        <span class="trait">🎨 Painter</span><span class="trait">🎹 Pianist & Singer</span><span class="trait">🦷 Future Dentist</span>
+      </div>
+      <p class="subtitle" style="line-height: 1.5; margin-top: 8px;">
+        Aaj Diwali pe room mein akele baithi hai, toh socha tere saare talents mila kar ek custom game bana du! <br><br>
+        Clear 6 mini-challenges to unlock your Diwali Gift!
       </p>
-      <button class="btn-glow" id="startBtn">Tap to Play 🎵</button>
+      <button class="btn-glow" id="startBtn">Start Aarushi's Game 🎵</button>
     </div>
   </div>
 
-  <!-- LEVEL 1: SYLLABUS NINJA -->
+  <!-- LEVEL 1 -->
   <div id="screen1" class="screen">
     <div class="header-box">
-      <div class="level-badge">Level 1 of 5 • Syllabus Ninja</div>
-      <div class="title">Let out the NEET frustration!</div>
-      <div class="subtitle">Swipe across the flying Physics & Bio books to slice them!</div>
-      <div class="score-pill">Books Sliced: <span id="l1Score">0</span> / 5</div>
+      <div class="level-badge">Level 1 • Bye-Bye NEET</div>
+      <div class="title">Pop the NEET Frustration! 💥</div>
+      <div class="subtitle">Tap all 6 bubbles to leave NEET stress behind!</div>
     </div>
-    <canvas id="l1Canvas" class="game-canvas"></canvas>
+    <div class="bubble-grid">
+      <div class="stress-bubble" data-roast="Physics ke numericals gaye bhaad mein! 😂">Physics Numericals</div>
+      <div class="stress-bubble" data-roast="NTA ki chai mein namak! ☕">NTA Scams</div>
+      <div class="stress-bubble" data-roast="Ab seedha Dental College! 🦷">MBBS Cut-off</div>
+      <div class="stress-bubble" data-roast="No more OMR filling tension! 🎯">OMR Bubbles</div>
+      <div class="stress-bubble" data-roast="10th se lekar NEET tak ka grind over! 🙌">Mock Test Ranks</div>
+      <div class="stress-bubble" data-roast="Organic ke exceptions khatam! 🧪">Organic Chem</div>
+    </div>
   </div>
 
-  <!-- LEVEL 2: DENTAL DIWALI -->
+  <!-- LEVEL 2 -->
   <div id="screen2" class="screen">
     <div class="header-box">
-      <div class="level-badge">Level 2 of 5 • Dental Diwali</div>
-      <div class="title">Catch Diyas & Teeth! 🪥</div>
-      <div class="subtitle">Move the toothbrush left/right. Dodge the Stethoscopes!</div>
-      <div class="score-pill">Score: <span id="l2Score">0</span> / 10</div>
+      <div class="level-badge">Level 2 • Plot Twist: MBBS ➔ BDS</div>
+      <div class="title">Catch Teeth, Dodge Stethoscopes! 🪥</div>
+      <div class="subtitle">Slide your Toothbrush! Stethoscope = -1 Point</div>
+      <div class="score-pill">BDS Points: <span id="l2Score">0</span> / 8</div>
     </div>
     <canvas id="l2Canvas" class="game-canvas"></canvas>
   </div>
 
-  <!-- LEVEL 3: MELODY OF LIGHT -->
+  <!-- LEVEL 3 -->
   <div id="screen3" class="screen">
     <div class="header-box">
-      <div class="level-badge">Level 3 of 5 • Melody of Light</div>
-      <div class="title">Light the Diyas with Music 🎹</div>
-      <div class="subtitle">Tap the 3 glowing piano keys to play a soothing chord</div>
+      <div class="level-badge">Level 3 • The Artist Inside You</div>
+      <div class="title">Aarushi's Diwali Canvas 🎨</div>
+      <div class="subtitle">Swipe your finger on the canvas to paint!</div>
+      <div class="score-pill" id="artProgress">Painted: 0%</div>
     </div>
-
-    <div class="diyas-row">
-      <div class="diya-wrap" id="diya0">
-        <div class="flame"></div>
-        <div class="diya-bowl"></div>
+    <div class="easel-box">
+      <div class="hidden-masterpiece">
+        <div class="masterpiece-icons">🪔🦷🎨</div>
+        <div class="masterpiece-caption">World's Coolest "Art-odontist"! ✨</div>
       </div>
-      <div class="diya-wrap" id="diya1">
-        <div class="flame"></div>
-        <div class="diya-bowl"></div>
-      </div>
-      <div class="diya-wrap" id="diya2">
-        <div class="flame"></div>
-        <div class="diya-bowl"></div>
-      </div>
-    </div>
-
-    <div class="piano-box">
-      <div class="piano-key glow" data-note="0">C</div>
-      <div class="piano-key" data-note="1">D</div>
-      <div class="piano-key glow" data-note="2">E</div>
-      <div class="piano-key" data-note="3">F</div>
-      <div class="piano-key glow" data-note="4">G</div>
+      <canvas id="artCanvas" width="280" height="280"></canvas>
     </div>
   </div>
 
-  <!-- LEVEL 4: CAVITY CLEANER 3000 -->
+  <!-- LEVEL 4 -->
   <div id="screen4" class="screen">
     <div class="header-box">
-      <div class="level-badge">Level 4 of 5 • Cavity Cleaner 3000</div>
-      <div class="title">The Mithai Aftermath 🍬</div>
-      <div class="subtitle">Rub the tooth with your finger to clean the Diwali sweet stains!</div>
-      <div class="score-pill" id="l4Status">Cleaned: 0%</div>
+      <div class="level-badge">Level 4 • Pianist Mode</div>
+      <div class="title">Play the Melody 🎹</div>
+      <div class="subtitle">Tap the glowing keys in order!</div>
     </div>
-
-    <div class="tooth-stage">
-      <div class="tooth-base">🦷</div>
-      <canvas id="scratchCanvas" width="260" height="290"></canvas>
+    <div class="diyas-row">
+      <div class="diya-wrap" id="diya0"><div class="flame"></div><div class="diya-bowl"></div></div>
+      <div class="diya-wrap" id="diya1"><div class="flame"></div><div class="diya-bowl"></div></div>
+      <div class="diya-wrap" id="diya2"><div class="flame"></div><div class="diya-bowl"></div></div>
+      <div class="diya-wrap" id="diya3"><div class="flame"></div><div class="diya-bowl"></div></div>
+    </div>
+    <div class="piano-box">
+      <div class="piano-key glow" data-step="0" data-freq="523.25">It-ti</div>
+      <div class="piano-key" data-step="1" data-freq="587.33">Si</div>
+      <div class="piano-key" data-step="2" data-freq="659.25">Ha-si</div>
+      <div class="piano-key" data-step="3" data-freq="783.99">✨</div>
     </div>
   </div>
 
-  <!-- LEVEL 5: THE SPARKLER REVEAL -->
+  <!-- LEVEL 5 -->
   <div id="screen5" class="screen">
-    <div class="header-box" id="l5Header">
-      <div class="level-badge">Final Level • Diwali Magic</div>
-      <div class="title">Draw with your Phuljhadi ✨</div>
-      <div class="subtitle">Swipe around the dark screen for 3 seconds to light up the night!</div>
+    <div class="header-box">
+      <div class="level-badge">Level 5 • Dr. Aarushi BDS</div>
+      <div class="title">Clean My Mithai Cavity! 🍫</div>
+      <div class="subtitle">Rub the stained tooth to pass!</div>
+      <div class="score-pill" id="l5Status">Plaque Removed: 0%</div>
     </div>
+    <div class="tooth-stage">
+      <div class="tooth-base">🦷</div>
+      <canvas id="scratchCanvas" width="250" height="270"></canvas>
+    </div>
+  </div>
 
-    <div class="message-card" id="finalCard">
-      <p class="msg-body">
-        Happy Diwali future dentist! 🪔 Mujhe pata hai aaj ki Diwali bilkul waisi nahi rahi jaisi honi chahiye thi, aur room mein akele baithe rehna sucks. Isliye koi 'bright Diwali' wala gyaan nahi dunga, bas itna yaad dila raha hu ki tu bilkul akeli nahi hai—main hu na! Waise bhi MBBS se BDS wala plot twist mere bade kaam ka hai, ab main bina dare mithai thhoos sakta hu kyunki meri personal dentist jo banne wali hai tu! 😆 Bas thode din ki baat aur hai, naya college aur nayi life tera wait kar rahi hai. Tab tak, tere chehre pe thodi si smile laane ki zimmedari meri. You got this!"
+  <!-- LEVEL 6: MEMORY MATCH -->
+  <div id="screen6" class="screen">
+    <div class="header-box">
+      <div class="level-badge">Level 6 • Brain Test</div>
+      <div class="title">Medical Match-Up! 🧠</div>
+      <div class="subtitle">Find all 8 matching pairs!</div>
+    </div>
+    <div class="memory-grid" id="memoryGrid"></div>
+  </div>
+
+  <!-- LEVEL 7: AESTHETIC FINAL MESSAGE -->
+  <div id="screen7" class="screen">
+    <div class="rx-card">
+      <div class="rx-header">
+        <div>
+          <div class="dr-name">Dr. Aarushi (BDS)</div>
+          <div class="dr-deg">Dept. of Smiles & Diwali Vibes ✨</div>
+        </div>
+        <div style="font-size: 2.2rem; filter: drop-shadow(0 0 10px #fde047);">🪔</div>
+      </div>
+      <div class="msg-body">
+        <span class="highlight-glow">Happy Diwali future dentist! 🪔</span><br><br>
+        Mujhe pata hai aaj ki Diwali bilkul waisi nahi rahi jaisi honi chahiye thi, aur room mein akele baithe rehna sucks. Isliye koi 'bright Diwali' wala gyaan nahi dunga, bas itna yaad dila raha hu ki tu bilkul akeli nahi hai—main hu na!
+        
+        <div class="aesthetic-divider"></div>
+        
+        Waise bhi <i>MBBS se BDS wala plot twist</i> mere bade kaam ka hai, ab main bina dare mithai thhoos sakta hu kyunki meri personal dentist jo banne wali hai tu! 😆 Bas thode din ki baat aur hai, naya college aur nayi life tera wait kar rahi hai. Tab tak, tere chehre pe thodi si smile laane ki zimmedari meri.
+        
+        <span class="cheer-text">You got this! 💛</span>
+      </div>
+      <button class="vip-btn" id="vipBtn">🎟️ Claim Free Lifetime Checkup Pass</button>
+    </div>
   </div>
 
   <script>
-    /* ==========================================
-       1. AUDIO & BGM TRIMMING ("AASHIYAN" BEST PART)
-       ========================================== */
     const bgm = document.getElementById('bgm');
-    const SONG_START = 15; // 0:15 - "Itti si hansi, itti si khushi..."
-    const SONG_END = 86;   // 1:26 - End of the main upbeat chorus
-
+    const SONG_START = 15, SONG_END = 86;
     let audioCtx = null;
 
-    function initAudio() {
-      // Start Web Audio API Synth for Piano & Sound Effects
-      if (!audioCtx) {
-        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-      }
-      if (audioCtx.state === 'suspended') {
-        audioCtx.resume();
-      }
-
-      // Start BGM at 30% volume from 0:15
-      bgm.volume = 0.30;
-      bgm.currentTime = SONG_START;
-      bgm.play().catch(() => {
-        // Fallback if song.mp3 isn't uploaded yet
-        console.log("Waiting for song.mp3 file in project root.");
-      });
-    }
-
-    // Keep looping the best part seamlessly
+    bgm.addEventListener('loadedmetadata', () => { if(bgm.duration > SONG_START) bgm.currentTime = SONG_START; });
     bgm.addEventListener('timeupdate', () => {
-      if (bgm.currentTime >= SONG_END) {
-        bgm.currentTime = SONG_START;
-        bgm.play();
-      }
+      if(bgm.currentTime >= SONG_END) { bgm.currentTime = SONG_START; bgm.play().catch(()=>{}); }
     });
 
-    // Web Audio API Soft Piano Synth
-    function playPianoChord(freqs) {
-      if (!audioCtx) return;
+    function initAudio() {
+      if(!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      if(audioCtx.state === 'suspended') audioCtx.resume();
+      bgm.volume = 0.30; bgm.play().catch(()=>{});
+    }
+
+    function playNote(freq, dur = 1.4) {
+      if(!audioCtx) return;
       const now = audioCtx.currentTime;
-      freqs.forEach((f) => {
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(f, now);
-
-        gain.gain.setValueAtTime(0.001, now);
-        gain.gain.exponentialRampToValueAtTime(0.18, now + 0.04);
-        gain.gain.exponentialRampToValueAtTime(0.0001, now + 2.2);
-
-        osc.connect(gain);
-        gain.connect(audioCtx.destination);
-        osc.start(now);
-        osc.stop(now + 2.3);
-      });
+      const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain();
+      osc.type = 'sine'; osc.frequency.setValueAtTime(freq, now);
+      gain.gain.setValueAtTime(0.001, now);
+      gain.gain.exponentialRampToValueAtTime(0.2, now + 0.03);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + dur);
+      osc.connect(gain); gain.connect(audioCtx.destination);
+      osc.start(now); osc.stop(now + dur + 0.1);
     }
 
-    /* ==========================================
-       2. GLOBAL SPARKLER TRAIL & FIREWORKS CANVAS
-       ========================================== */
-    const bgCanvas = document.getElementById('bgCanvas');
-    const bgCtx = bgCanvas.getContext('2d');
-    let sparks = [];
-    let fireworks = [];
-    let fireworksActive = false;
+    // Canvas Background
+    const bgCanvas = document.getElementById('bgCanvas'); const bgCtx = bgCanvas.getContext('2d');
+    let sparks = [], fireworks = [], fireworksActive = false;
 
-    function resizeBg() {
-      bgCanvas.width = window.innerWidth;
-      bgCanvas.height = window.innerHeight;
-    }
-    window.addEventListener('resize', resizeBg);
-    resizeBg();
+    function resizeBg() { bgCanvas.width = window.innerWidth; bgCanvas.height = window.innerHeight; }
+    window.addEventListener('resize', resizeBg); resizeBg();
 
-    function createSpark(x, y, count = 4) {
-      const colors = ['#ffd166', '#ffb703', '#fb8500', '#ffffff', '#38bdf8'];
-      for (let i = 0; i < count; i++) {
-        const angle = Math.random() * Math.PI * 2;
-        const speed = Math.random() * 3 + 0.5;
-        sparks.push({
-          x, y,
-          vx: Math.cos(angle) * speed,
-          vy: Math.sin(angle) * speed,
-          life: 1,
-          decay: Math.random() * 0.03 + 0.02,
-          color: colors[Math.floor(Math.random() * colors.length)],
-          size: Math.random() * 3 + 1.5
-        });
+    function createSpark(x, y, count = 5) {
+      const colors = ['#ffd166', '#ffb703', '#fb8500', '#38bdf8', '#f472b6'];
+      for(let i=0; i<count; i++) {
+        const a = Math.random() * Math.PI * 2, s = Math.random() * 3.5 + 0.5;
+        sparks.push({x, y, vx: Math.cos(a)*s, vy: Math.sin(a)*s, life: 1, decay: Math.random()*0.03+0.02, color: colors[Math.floor(Math.random()*colors.length)], size: Math.random()*3+1.5});
       }
     }
 
@@ -533,517 +388,156 @@
       const x = Math.random() * (bgCanvas.width * 0.8) + bgCanvas.width * 0.1;
       const y = Math.random() * (bgCanvas.height * 0.45) + bgCanvas.height * 0.1;
       const colors = ['#ffd166', '#ff006e', '#38bdf8', '#a855f7', '#4ade80'];
-      const color = colors[Math.floor(Math.random() * colors.length)];
-      for (let i = 0; i < 40; i++) {
-        const angle = (Math.PI * 2 * i) / 40;
-        const speed = Math.random() * 4 + 1.5;
-        fireworks.push({
-          x, y,
-          vx: Math.cos(angle) * speed,
-          vy: Math.sin(angle) * speed,
-          life: 1,
-          decay: Math.random() * 0.015 + 0.01,
-          color,
-          size: Math.random() * 2.5 + 1.5
-        });
+      const c = colors[Math.floor(Math.random() * colors.length)];
+      for(let i=0; i<42; i++) {
+        const a = (Math.PI*2*i)/42, s = Math.random()*4.2+1.2;
+        fireworks.push({x, y, vx: Math.cos(a)*s, vy: Math.sin(a)*s, life: 1, decay: Math.random()*0.015+0.01, color: c, size: Math.random()*2.5+1.5});
       }
     }
 
     function animateBg() {
-      bgCtx.clearRect(0, 0, bgCanvas.width, bgCanvas.height);
-
-      // Update sparkler cursor particles
-      for (let i = sparks.length - 1; i >= 0; i--) {
-        const p = sparks[i];
-        p.x += p.vx;
-        p.y += p.vy;
-        p.vy += 0.05; // light gravity
-        p.life -= p.decay;
-        if (p.life <= 0) {
-          sparks.splice(i, 1);
-          continue;
-        }
-        bgCtx.save();
-        bgCtx.globalAlpha = p.life;
-        bgCtx.fillStyle = p.color;
-        bgCtx.shadowBlur = 10;
-        bgCtx.shadowColor = p.color;
-        bgCtx.beginPath();
-        bgCtx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        bgCtx.fill();
-        bgCtx.restore();
+      bgCtx.clearRect(0,0,bgCanvas.width,bgCanvas.height);
+      for(let i=sparks.length-1; i>=0; i--) {
+        let p = sparks[i]; p.x += p.vx; p.y += p.vy; p.vy += 0.05; p.life -= p.decay;
+        if(p.life<=0){ sparks.splice(i,1); continue; }
+        bgCtx.save(); bgCtx.globalAlpha=p.life; bgCtx.fillStyle=p.color; bgCtx.shadowBlur=10; bgCtx.shadowColor=p.color; bgCtx.beginPath(); bgCtx.arc(p.x,p.y,p.size,0,Math.PI*2); bgCtx.fill(); bgCtx.restore();
       }
-
-      // Update background fireworks (Level 5)
-      if (fireworksActive && Math.random() < 0.04) {
-        launchFirework();
+      if(fireworksActive && Math.random()<0.05) launchFirework();
+      for(let i=fireworks.length-1; i>=0; i--) {
+        let f = fireworks[i]; f.x += f.vx; f.y += f.vy; f.vy += 0.04; f.life -= f.decay;
+        if(f.life<=0){ fireworks.splice(i,1); continue; }
+        bgCtx.save(); bgCtx.globalAlpha=f.life; bgCtx.fillStyle=f.color; bgCtx.shadowBlur=12; bgCtx.shadowColor=f.color; bgCtx.beginPath(); bgCtx.arc(f.x,f.y,f.size,0,Math.PI*2); bgCtx.fill(); bgCtx.restore();
       }
-      for (let i = fireworks.length - 1; i >= 0; i--) {
-        const f = fireworks[i];
-        f.x += f.vx;
-        f.y += f.vy;
-        f.vy += 0.04;
-        f.life -= f.decay;
-        if (f.life <= 0) {
-          fireworks.splice(i, 1);
-          continue;
-        }
-        bgCtx.save();
-        bgCtx.globalAlpha = f.life;
-        bgCtx.fillStyle = f.color;
-        bgCtx.shadowBlur = 12;
-        bgCtx.shadowColor = f.color;
-        bgCtx.beginPath();
-        bgCtx.arc(f.x, f.y, f.size, 0, Math.PI * 2);
-        bgCtx.fill();
-        bgCtx.restore();
-      }
-
       requestAnimationFrame(animateBg);
     }
     animateBg();
 
-    // Global Pointer Listener for Sparkler Effect
-    window.addEventListener('pointermove', (e) => {
-      createSpark(e.clientX, e.clientY, 3);
-      if (currentLevel === 5) handleL5Draw(e.clientX, e.clientY);
-    });
-    window.addEventListener('pointerdown', (e) => {
-      createSpark(e.clientX, e.clientY, 6);
-      if (currentLevel === 5) handleL5Draw(e.clientX, e.clientY);
-    });
+    window.addEventListener('pointerdown', e => createSpark(e.clientX, e.clientY, 7));
 
-    /* ==========================================
-       3. LEVEL MANAGEMENT & TOAST
-       ========================================== */
-    let currentLevel = 0;
-    const toastEl = document.getElementById('toast');
-    let toastTimer = null;
-
-    function showToast(msg, bg = 'rgba(239, 68, 68, 0.92)') {
-      toastEl.textContent = msg;
-      toastEl.style.background = bg;
-      toastEl.classList.add('show');
-      clearTimeout(toastTimer);
-      toastTimer = setTimeout(() => toastEl.classList.remove('show'), 1800);
+    // Game Logic
+    const toastEl = document.getElementById('toast'); let toastTimer;
+    function showToast(msg, bg = 'rgba(239, 68, 68, 0.95)') {
+      toastEl.textContent = msg; toastEl.style.background = bg; toastEl.classList.add('show');
+      clearTimeout(toastTimer); toastTimer = setTimeout(()=>toastEl.classList.remove('show'), 1800);
     }
 
-    function switchLevel(nextLevel) {
+    function switchLevel(n) {
       document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-      const target = document.getElementById(`screen${nextLevel}`);
-      if (target) target.classList.add('active');
-      currentLevel = nextLevel;
-
-      if (nextLevel === 1) startLevel1();
-      if (nextLevel === 2) startLevel2();
-      if (nextLevel === 3) startLevel3();
-      if (nextLevel === 4) startLevel4();
-      if (nextLevel === 5) startLevel5();
+      document.getElementById(`screen${n}`).classList.add('active');
+      if(n===1) startLevel1(); if(n===2) startLevel2(); if(n===3) startLevel3();
+      if(n===4) startLevel4(); if(n===5) startLevel5(); if(n===6) startLevel6();
+      if(n===7) { fireworksActive=true; launchFirework(); launchFirework(); playNote(880, 2); }
     }
 
-    document.getElementById('startBtn').addEventListener('click', () => {
-      initAudio();
-      playPianoChord([523.25, 659.25, 783.99]);
-      switchLevel(1);
-    });
-
-    /* ==========================================
-       LEVEL 1: SYLLABUS NINJA (SWIPE BOOKS)
-       ========================================== */
-    let l1Active = false;
-    let l1Books = [];
-    let l1Sliced = 0;
-    let swipePoints = [];
-    let isSwiping = false;
+    document.getElementById('startBtn').addEventListener('click', () => { initAudio(); playNote(523.25); switchLevel(1); });
 
     function startLevel1() {
-      l1Active = true;
-      l1Sliced = 0;
-      const canvas = document.getElementById('l1Canvas');
-      const ctx = canvas.getContext('2d');
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-
-      const bookTypes = [
-        { emoji: '📘', label: 'Physics HC Verma' },
-        { emoji: '📗', label: 'NCERT Bio' },
-        { emoji: '📕', label: 'Organic Chem' }
-      ];
-
-      function spawnBook() {
-        if (!l1Active) return;
-        const type = bookTypes[Math.floor(Math.random() * bookTypes.length)];
-        const x = Math.random() * (canvas.width - 100) + 50;
-        const vx = (canvas.width / 2 - x) * 0.015 + (Math.random() - 0.5) * 2;
-        const vy = -(Math.random() * 4 + 11.5);
-        l1Books.push({
-          x,
-          y: canvas.height + 40,
-          vx,
-          vy,
-          emoji: type.emoji,
-          label: type.label,
-          sliced: false,
-          angle: 0,
-          vAngle: (Math.random() - 0.5) * 0.08,
-          alpha: 1
+      let p=0; document.querySelectorAll('.stress-bubble').forEach(b => {
+        b.addEventListener('pointerdown', e => {
+          if(b.classList.contains('popped')) return;
+          b.classList.add('popped'); p++; playNote(400+p*60, 0.4); createSpark(e.clientX, e.clientY, 14);
+          showToast(b.getAttribute('data-roast'), 'rgba(168, 85, 247, 0.95)');
+          if(p===6) setTimeout(()=>switchLevel(2), 1100);
         });
-      }
-
-      const spawnInterval = setInterval(() => {
-        if (!l1Active) {
-          clearInterval(spawnInterval);
-          return;
-        }
-        spawnBook();
-      }, 950);
-      spawnBook();
-
-      function checkSlice(px, py) {
-        l1Books.forEach(b => {
-          if (!b.sliced && Math.hypot(b.x - px, b.y - py) < 52) {
-            b.sliced = true;
-            l1Sliced++;
-            document.getElementById('l1Score').textContent = Math.min(l1Sliced, 5);
-            createSpark(b.x, b.y, 12);
-            playPianoChord([440, 554.37]);
-
-            if (l1Sliced >= 5 && l1Active) {
-              l1Active = false;
-              showToast('NEET Books Sliced! 🔥', 'rgba(16, 185, 129, 0.95)');
-              setTimeout(() => switchLevel(2), 1100);
-            }
-          }
-        });
-      }
-
-      canvas.addEventListener('pointerdown', (e) => {
-        isSwiping = true;
-        swipePoints = [{ x: e.clientX, y: e.clientY }];
-        checkSlice(e.clientX, e.clientY);
       });
-
-      canvas.addEventListener('pointermove', (e) => {
-        if (!isSwiping) return;
-        swipePoints.push({ x: e.clientX, y: e.clientY });
-        if (swipePoints.length > 10) swipePoints.shift();
-        checkSlice(e.clientX, e.clientY);
-      });
-
-      window.addEventListener('pointerup', () => {
-        isSwiping = false;
-        swipePoints = [];
-      });
-
-      function loopL1() {
-        if (!l1Active && currentLevel !== 1) return;
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        // Draw blade swipe line
-        if (swipePoints.length > 1) {
-          ctx.save();
-          ctx.strokeStyle = '#38bdf8';
-          ctx.lineWidth = 5;
-          ctx.lineCap = 'round';
-          ctx.shadowBlur = 15;
-          ctx.shadowColor = '#38bdf8';
-          ctx.beginPath();
-          ctx.moveTo(swipePoints[0].x, swipePoints[0].y);
-          for (let i = 1; i < swipePoints.length; i++) {
-            ctx.lineTo(swipePoints[i].x, swipePoints[i].y);
-          }
-          ctx.stroke();
-          ctx.restore();
-        }
-
-        // Update and draw flying books
-        for (let i = l1Books.length - 1; i >= 0; i--) {
-          const b = l1Books[i];
-          b.x += b.vx;
-          b.y += b.vy;
-          b.vy += 0.22; // gravity
-          b.angle += b.vAngle;
-
-          if (b.sliced) {
-            b.alpha -= 0.06;
-          }
-
-          if (b.y > canvas.height + 80 || b.alpha <= 0) {
-            l1Books.splice(i, 1);
-            continue;
-          }
-
-          ctx.save();
-          ctx.globalAlpha = Math.max(0, b.alpha);
-          ctx.translate(b.x, b.y);
-          ctx.rotate(b.angle);
-          ctx.font = '50px sans-serif';
-          ctx.textAlign = 'center';
-          ctx.textBaseline = 'middle';
-          ctx.fillText(b.sliced ? '💥' : b.emoji, 0, 0);
-
-          ctx.font = '600 12px Outfit';
-          ctx.fillStyle = '#fde047';
-          ctx.fillText(b.label, 0, 36);
-          ctx.restore();
-        }
-
-        requestAnimationFrame(loopL1);
-      }
-      loopL1();
     }
 
-    /* ==========================================
-       LEVEL 2: DENTAL DIWALI (FALLING OBJECTS)
-       ========================================== */
-    let l2Active = false;
-    let l2Score = 0;
-
+    let l2Active=false;
     function startLevel2() {
-      l2Active = true;
-      l2Score = 0;
-      const canvas = document.getElementById('l2Canvas');
-      const ctx = canvas.getContext('2d');
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-
-      let brushX = canvas.width / 2;
-      const brushY = canvas.height - 95;
-      let items = [];
-
-      function spawnItem() {
-        if (!l2Active) return;
-        const rand = Math.random();
-        let type = 'diya';
-        let emoji = '🪔';
-        if (rand > 0.42 && rand <= 0.76) {
-          type = 'tooth';
-          emoji = '🦷';
-        } else if (rand > 0.76) {
-          type = 'steth';
-          emoji = '🩺';
-        }
-
-        items.push({
-          x: Math.random() * (canvas.width - 70) + 35,
-          y: -30,
-          vy: Math.random() * 2.2 + 3.2,
-          type,
-          emoji
-        });
-      }
-
-      const spawnTimer = setInterval(() => {
-        if (!l2Active) {
-          clearInterval(spawnTimer);
-          return;
-        }
-        spawnItem();
-      }, 700);
-      spawnItem();
-
-      canvas.addEventListener('pointermove', (e) => {
-        brushX = e.clientX;
-      });
-      canvas.addEventListener('pointerdown', (e) => {
-        brushX = e.clientX;
-      });
-
-      function loopL2() {
-        if (!l2Active && currentLevel !== 2) return;
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        // Draw Glowing Toothbrush Catcher
-        ctx.save();
-        ctx.shadowBlur = 22;
-        ctx.shadowColor = '#38bdf8';
-        ctx.font = '54px sans-serif';
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        ctx.fillText('🪥', brushX, brushY);
-        ctx.restore();
-
-        // Update Falling Items
-        for (let i = items.length - 1; i >= 0; i--) {
-          const it = items[i];
-          it.y += it.vy;
-
-          // Collision Check
-          if (Math.hypot(it.x - brushX, it.y - brushY) < 48) {
-            if (it.type === 'steth') {
-              l2Score = Math.max(0, l2Score - 1);
-              showToast('Arre, stethoscope chhod ab daant dekh! 😂');
-              playPianoChord([220, 233.08]);
-            } else {
-              l2Score++;
-              createSpark(it.x, it.y, 10);
-              playPianoChord([587.33, 880]);
-            }
-            document.getElementById('l2Score').textContent = l2Score;
-            items.splice(i, 1);
-
-            if (l2Score >= 10 && l2Active) {
-              l2Active = false;
-              showToast('Superb Catching, Doc! 🦷✨', 'rgba(16, 185, 129, 0.95)');
-              setTimeout(() => switchLevel(3), 1100);
-            }
+      l2Active=true; let sc=0, items=[]; const cvs = document.getElementById('l2Canvas'), ctx = cvs.getContext('2d');
+      cvs.width=window.innerWidth; cvs.height=window.innerHeight; let bx=cvs.width/2, by=cvs.height-95;
+      const t = setInterval(()=>{
+        if(!l2Active) return clearInterval(t);
+        const r=Math.random(); items.push({x:Math.random()*(cvs.width-70)+35, y:-30, vy:Math.random()*2+3.2, type:r>0.75?'steth':'tooth', emoji:r>0.75?'🩺':'🦷'});
+      }, 680);
+      cvs.addEventListener('pointermove', e=>bx=e.clientX); cvs.addEventListener('pointerdown', e=>bx=e.clientX);
+      function loop() {
+        if(!l2Active) return; ctx.clearRect(0,0,cvs.width,cvs.height);
+        ctx.save(); ctx.font='54px sans-serif'; ctx.textAlign='center'; ctx.fillText('🪥', bx, by); ctx.restore();
+        for(let i=items.length-1; i>=0; i--) {
+          let it=items[i]; it.y+=it.vy;
+          if(Math.hypot(it.x-bx, it.y-by)<48) {
+            if(it.type==='steth'){ sc=Math.max(0,sc-1); showToast('Arre Stethoscope chhod! 😂'); playNote(220,0.5); }
+            else { sc++; createSpark(it.x,it.y,10); playNote(659.25,0.5); }
+            document.getElementById('l2Score').textContent=sc; items.splice(i,1);
+            if(sc>=8){ l2Active=false; showToast('Pro Dentist! 🦷', 'rgba(16, 185, 129, 0.95)'); setTimeout(()=>switchLevel(3), 1100); }
             continue;
           }
-
-          if (it.y > canvas.height + 50) {
-            items.splice(i, 1);
-            continue;
-          }
-
-          ctx.save();
-          ctx.font = '40px sans-serif';
-          ctx.textAlign = 'center';
-          ctx.textBaseline = 'middle';
-          ctx.shadowBlur = 15;
-          ctx.shadowColor = it.type === 'steth' ? '#ef4444' : '#ffb703';
-          ctx.fillText(it.emoji, it.x, it.y);
-          ctx.restore();
-        }
-
-        requestAnimationFrame(loopL2);
-      }
-      loopL2();
+          ctx.font='40px sans-serif'; ctx.fillText(it.emoji, it.x, it.y);
+        } requestAnimationFrame(loop);
+      } loop();
     }
 
-    /* ==========================================
-       LEVEL 3: MELODY OF LIGHT (PIANO & DIYAS)
-       ========================================== */
     function startLevel3() {
-      let litCount = 0;
-      const chords = {
-        0: [261.63, 329.63, 392.00, 523.25], // C Major
-        1: [293.66, 369.99, 440.00],         // D Major
-        2: [329.63, 415.30, 493.88, 659.25], // E Major
-        3: [349.23, 440.00, 523.25],         // F Major
-        4: [392.00, 493.88, 587.33, 783.99]  // G Major
-      };
-
-      const keys = document.querySelectorAll('.piano-key');
-      keys.forEach(key => {
-        key.addEventListener('pointerdown', () => {
-          const note = key.getAttribute('data-note');
-          playPianoChord(chords[note]);
-          key.classList.add('pressed');
-          setTimeout(() => key.classList.remove('pressed'), 200);
-
-          if (key.classList.contains('glow')) {
-            key.classList.remove('glow');
-            const diya = document.getElementById(`diya${litCount}`);
-            if (diya) diya.classList.add('lit');
-            litCount++;
-
-            if (litCount === 3) {
-              showToast('All Diyas Lit! Pure Magic 🪔✨', 'rgba(245, 158, 11, 0.95)');
-              setTimeout(() => switchLevel(4), 1300);
-            }
-          }
-        });
-      });
+      const c=document.getElementById('artCanvas'), ctx=c.getContext('2d'); let p=false, d=false;
+      ctx.fillStyle='#1e293b'; ctx.fillRect(0,0,280,280); ctx.font='17px Outfit'; ctx.fillStyle='#94a3b8'; ctx.textAlign='center';
+      ctx.fillText('🖌️ Swipe to Paint', 140, 140);
+      const tot = ctx.getImageData(0,0,280,280).data.filter((_,i)=>i%4===3 && _>40).length;
+      function draw(e) {
+        if(d) return; const r=c.getBoundingClientRect(); ctx.globalCompositeOperation='destination-out';
+        ctx.beginPath(); ctx.arc(e.clientX-r.left, e.clientY-r.top, 28, 0, Math.PI*2); ctx.fill(); createSpark(e.clientX, e.clientY, 3);
+        let curr = ctx.getImageData(0,0,280,280).data.filter((_,i)=>i%4===3 && _>40).length;
+        let pct = Math.min(100, Math.round(((tot-curr)/tot)*100)); document.getElementById('artProgress').textContent=`Painted: ${pct}%`;
+        if(pct>=72 && !d){ d=true; ctx.clearRect(0,0,280,280); playNote(783.99,1); showToast('Masterpiece! 🎨', 'rgba(16, 185, 129, 0.95)'); setTimeout(()=>switchLevel(4),1400); }
+      }
+      c.addEventListener('pointerdown', e=>{p=true; draw(e)}); c.addEventListener('pointermove', e=>{if(p)draw(e)}); window.addEventListener('pointerup', ()=>p=false);
     }
 
-    /* ==========================================
-       LEVEL 4: CAVITY CLEANER 3000 (SCRATCH CARD)
-       ========================================== */
     function startLevel4() {
-      const sCanvas = document.getElementById('scratchCanvas');
-      const sCtx = sCanvas.getContext('2d');
-      let isRubbing = false;
-      let l4Cleared = false;
-
-      // Draw Dark Sweet Stain Overlay over the Tooth
-      sCtx.globalCompositeOperation = 'source-over';
-      sCtx.clearRect(0, 0, sCanvas.width, sCanvas.height);
-
-      sCtx.fillStyle = 'rgba(92, 51, 23, 0.92)';
-      sCtx.beginPath();
-      sCtx.arc(130, 145, 88, 0, Math.PI * 2);
-      sCtx.fill();
-
-      sCtx.font = 'bold 16px Outfit';
-      sCtx.fillStyle = '#fde047';
-      sCtx.textAlign = 'center';
-      sCtx.fillText('🍫 Kaju Katli &', 130, 135);
-      sCtx.fillText('Gulab Jamun Stain!', 130, 158);
-
-      // Calculate non-transparent pixels initially
-      function getRemainingPixels() {
-        const imgData = sCtx.getImageData(0, 0, sCanvas.width, sCanvas.height).data;
-        let count = 0;
-        for (let i = 3; i < imgData.length; i += 16) {
-          if (imgData[i] > 40) count++;
+      let st=0; const keys = document.querySelectorAll('.piano-key');
+      keys.forEach(k => k.addEventListener('pointerdown', () => {
+        if(parseInt(k.dataset.step)===st) {
+          playNote(parseFloat(k.dataset.freq), 1.2); k.classList.remove('glow');
+          document.getElementById(`diya${st}`).classList.add('lit'); st++;
+          if(st<4) keys[st].classList.add('glow');
+          else { showToast('Beautiful Melody! 🎹', 'rgba(245, 158, 11, 0.95)'); setTimeout(()=>switchLevel(5), 1300); }
         }
-        return count;
-      }
-
-      const initialStain = getRemainingPixels();
-
-      function scratch(e) {
-        if (l4Cleared) return;
-        const rect = sCanvas.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-
-        sCtx.globalCompositeOperation = 'destination-out';
-        sCtx.beginPath();
-        sCtx.arc(x, y, 26, 0, Math.PI * 2);
-        sCtx.fill();
-
-        createSpark(e.clientX, e.clientY, 2);
-
-        const currentStain = getRemainingPixels();
-        const cleanedPct = Math.min(100, Math.round(((initialStain - currentStain) / initialStain) * 100));
-        document.getElementById('l4Status').textContent = `Cleaned: ${cleanedPct}%`;
-
-        if (cleanedPct >= 80 && !l4Cleared) {
-          l4Cleared = true;
-          sCtx.clearRect(0, 0, sCanvas.width, sCanvas.height);
-          document.getElementById('l4Status').textContent = `Cleaned: 100% ✨`;
-          playPianoChord([523.25, 659.25, 783.99, 1046.5]);
-          showToast('Perfect Dentist! 🦷✨', 'rgba(16, 185, 129, 0.95)');
-          setTimeout(() => switchLevel(5), 1300);
-        }
-      }
-
-      sCanvas.addEventListener('pointerdown', (e) => {
-        isRubbing = true;
-        scratch(e);
-      });
-      sCanvas.addEventListener('pointermove', (e) => {
-        if (isRubbing) scratch(e);
-      });
-      window.addEventListener('pointerup', () => {
-        isRubbing = false;
-      });
+      }));
     }
-
-    /* ==========================================
-       LEVEL 5: THE SPARKLER REVEAL & MESSAGE
-       ========================================== */
-    let l5TimerStarted = false;
 
     function startLevel5() {
-      l5TimerStarted = false;
+      const c=document.getElementById('scratchCanvas'), ctx=c.getContext('2d'); let p=false, d=false;
+      ctx.fillStyle='rgba(92,51,23,0.93)'; ctx.beginPath(); ctx.arc(125,135,82,0,Math.PI*2); ctx.fill();
+      ctx.font='15px Outfit'; ctx.fillStyle='#fde047'; ctx.textAlign='center'; ctx.fillText('🍫 Cavity Stain', 125, 135);
+      const tot = ctx.getImageData(0,0,250,270).data.filter((_,i)=>i%4===3 && _>40).length;
+      function draw(e) {
+        if(d) return; const r=c.getBoundingClientRect(); ctx.globalCompositeOperation='destination-out';
+        ctx.beginPath(); ctx.arc(e.clientX-r.left, e.clientY-r.top, 26, 0, Math.PI*2); ctx.fill(); createSpark(e.clientX, e.clientY, 2);
+        let curr = ctx.getImageData(0,0,250,270).data.filter((_,i)=>i%4===3 && _>40).length;
+        let pct = Math.min(100, Math.round(((tot-curr)/tot)*100)); document.getElementById('l5Status').textContent=`Plaque: ${pct}%`;
+        if(pct>=78 && !d){ d=true; ctx.clearRect(0,0,250,270); playNote(1046.5,1.5); showToast('BDS Practical Passed! 🦷', 'rgba(16, 185, 129, 0.95)'); setTimeout(()=>switchLevel(6),1300); }
+      }
+      c.addEventListener('pointerdown', e=>{p=true; draw(e)}); c.addEventListener('pointermove', e=>{if(p)draw(e)}); window.addEventListener('pointerup', ()=>p=false);
     }
 
-    function handleL5Draw(x, y) {
-      createSpark(x, y, 6);
-      if (!l5TimerStarted) {
-        l5TimerStarted = true;
-        setTimeout(() => {
-          fireworksActive = true;
-          launchFirework();
-          launchFirework();
-          playPianoChord([261.63, 329.63, 392.00, 523.25]);
-          document.getElementById('l5Header').style.opacity = '0';
-          document.getElementById('finalCard').classList.add('visible');
-        }, 3000);
-      }
+    function startLevel6() {
+      const grid = document.getElementById('memoryGrid'); grid.innerHTML = '';
+      const icons = ['🩺', '🩺', '🧠', '🧠', '💉', '💉', '🦷', '🦷'].sort(() => 0.5 - Math.random());
+      let flip=[], match=0;
+      icons.forEach((ic) => {
+        const card = document.createElement('div'); card.className = 'memory-card';
+        card.innerHTML = `<div class="front-face">?</div><div class="back-face">${ic}</div>`;
+        grid.appendChild(card);
+        card.addEventListener('click', () => {
+          if(flip.length<2 && !card.classList.contains('flip')) {
+            card.classList.add('flip'); playNote(400+flip.length*100, 0.2); flip.push({c:card, i:ic});
+            if(flip.length===2) {
+              if(flip[0].i === flip[1].i) {
+                match+=2; playNote(800, 0.4); createSpark(card.getBoundingClientRect().left, card.getBoundingClientRect().top, 10); flip=[];
+                if(match===8){ showToast('Perfect Memory! 🧠', 'rgba(16, 185, 129, 0.95)'); setTimeout(()=>switchLevel(7), 1500); }
+              } else { setTimeout(() => { flip[0].c.classList.remove('flip'); flip[1].c.classList.remove('flip'); flip=[]; playNote(300, 0.3); }, 750); }
+            }
+          }
+        });
+      });
     }
+
+    document.getElementById('vipBtn').addEventListener('click', (e) => {
+      e.target.innerHTML = "✅ Appointment Booked! Mithai Ready Rakhna 😂";
+      e.target.style.background = "linear-gradient(90deg, #10b981, #34d399, #10b981)";
+      e.target.style.color = "#fff"; e.target.style.boxShadow = "0 10px 30px rgba(16, 185, 129, 0.4)";
+      for(let i=0; i<5; i++) setTimeout(launchFirework, i*250); playNote(1046, 1.5);
+    });
   </script>
 </body>
 </html>
